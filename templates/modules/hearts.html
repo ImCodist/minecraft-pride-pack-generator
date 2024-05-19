@@ -1,0 +1,22 @@
+{% extends "module.html" %}
+
+{% block title %}Hearts{% endblock %}
+{% block id %}hearts{% endblock %}
+
+{% block toggle_id %}hearts_enabled{% endblock %}
+{% block segment_id %}hearts_segment{% endblock %}
+
+{% block segment %}
+<!-- flag selection -->
+<div class="field">
+    <label>Flag</label>
+    <div class="ui selection dropdown">
+        <input type="hidden" name="hearts_flag" id="hearts_flag">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Flag</div>
+        <div class="menu" id="_hearts_flag_menu">
+            <div class="item" data-value="a">a</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

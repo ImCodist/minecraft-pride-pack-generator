@@ -1,0 +1,56 @@
+{% extends "module.html" %}
+
+{% block title %}Experience Bar{% endblock %}
+{% block id %}xp_bar{% endblock %}
+
+{% block toggle_id %}xp_bar_enabled{% endblock %}
+{% block segment_id %}xp_bar_segment{% endblock %}
+
+{% block segment %}
+<!-- flag selection -->
+<div class="ui equal width grid">
+    <div class="column">
+        <div class="field">
+            <label>Flag</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="xp_bar_flag" id="xp_bar_flag">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Flag</div>
+                <div class="menu" id="_xp_bar_flag_menu">
+                    <div class="item" data-value="a">a</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="field">
+            <label>Background Flag</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="xp_bar_flag_bg" id="xp_bar_flag_bg">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Background Flag</div>
+                <div class="menu" id="_xp_bar_flag_bg_menu">
+                    <div class="item" data-value="a">a</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- checkboxes -->
+<div class="ui grid" style="margin-top: 5px;">
+    <div class="six wide column">
+        <div class="ui checkbox">
+            <input type="checkbox" name="xp_bar_do_bg" id="xp_bar_do_bg" checked>
+            <label>Change Background Texture</label>
+        </div>
+    </div>
+    <div class="six wide column">
+        <div class="ui checkbox">
+            <input type="checkbox" name="xp_bar_unique_bg" id="xp_bar_unique_bg">
+            <label>Use Unique Background Flag</label>
+        </div>
+    </div>
+</div>
+{% endblock %}

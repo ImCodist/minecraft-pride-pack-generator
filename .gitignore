@@ -161,9 +161,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Project Specific
-.output/
-.temp/
+# Gunicorn
+gunicorn.conf.py
 
-# Me Specific
+# Other
 .vscode/

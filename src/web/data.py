@@ -5,7 +5,7 @@ Has no visual front end.
 """
 
 
-from data import get_flags
+from data.flag import get_flags
 from flask import Blueprint
 
 from main import version_formatted, git_info

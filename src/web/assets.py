@@ -4,10 +4,10 @@ Has no visual front end.
 """
 
 
-from data import get_flags
+from data.flag import get_flags
 from flask import Blueprint, request, send_file
 from PIL import Image
-from generation import generate_flag_on_image
+from image import generate_flag_on_image
 from io import BytesIO
 
 

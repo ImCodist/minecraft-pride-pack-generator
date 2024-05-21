@@ -6,7 +6,7 @@ Has no visual front end.
 
 from flask import Blueprint, request, send_file
 from components import experience_bar, hearts, enchanted_glint
-from data import PackageData
+from data.package import PackageData
 
 
 RESULT_FILE_NAME = "pridepack.zip"

@@ -4,7 +4,7 @@ Contains functions components use to generate their retrospective textures.
 
 
 from typing import Union
-from data import FlagData
+from data.flag import FlagData
 from PIL import Image, ImageColor, ImageOps, ImageDraw
 
 

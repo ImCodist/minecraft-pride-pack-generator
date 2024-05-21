@@ -1,6 +1,6 @@
 from components import ComponentBase, Texture
-from data import get_flag
-from generation import generate_flag_on_image
+from data.flag import get_flag
+from image import generate_flag_on_image
 from os import path
 
 

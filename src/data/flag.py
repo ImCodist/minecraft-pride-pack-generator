@@ -7,7 +7,10 @@ import json
 
 
 FLAGS_DIRECTORY = "assets/flags"
+
 DEFAULT_FLAG_ID = "traditional"
+DEFAULT_FLAG_ICON_VERTICAL = True
+
 CACHE_FLAG_DATA = True
 
 
@@ -21,12 +24,12 @@ class FlagData():
         self.name = self.id
         self.colors = []
         
-        self.vertical_icon = True
+        self.vertical_icon = DEFAULT_FLAG_ICON_VERTICAL
     
     def load_json_data(self, json_data: dict):
         # get basic flag metadata
         self.name = json_data.get("name", self.id)
-        self.vertical_icon = json_data.get("vertical_icon", True)
+        self.vertical_icon = json_data.get("vertical_icon", DEFAULT_FLAG_ICON_VERTICAL)
         
         # get flag colors
         self.colors = json_data.get("colors", [])

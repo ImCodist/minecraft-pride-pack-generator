@@ -9,9 +9,11 @@ from flask import Blueprint, request, send_file
 from PIL import Image
 from image import generate_flag_on_image
 from io import BytesIO
+from os import path
 
 
 ASSET_FLAG_BASE = "assets/images/site/flag_base.png"
+ASSET_FALLBACK_FLAG = "assets/images/site/flag_fallback.png"
 CACHE_FLAG_ICONS = True
 
 
@@ -63,11 +65,12 @@ def data_flags():
         # get the flags unique icon
         flag_icon = get_flag_icon(flag_id)
         
-        # save the icon to bytes
-        flag_bytes = BytesIO()
-        flag_icon.save(flag_bytes, format="PNG")
-        flag_bytes.seek(0)
-        
-        return send_file(flag_bytes, mimetype="image/png")
+        if flag_icon:
+            # save the icon to bytes
+            flag_bytes = BytesIO()
+            flag_icon.save(flag_bytes, format="PNG")
+            flag_bytes.seek(0)
+            
+            return send_file(flag_bytes, mimetype="image/png")
     
-    return flag_id
+    return send_file(path.abspath(ASSET_FALLBACK_FLAG))

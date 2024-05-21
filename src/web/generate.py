@@ -9,6 +9,9 @@ from components import experience_bar, hearts, enchanted_glint
 from data.package import PackageData, PACK_FILE_NAME
 
 
+MSG_ERROR_EMPTY_PACK = "nice try but im not generating you an empty resource pack<br>why would you want this anyways"
+
+
 def parse_request_args(args) -> dict:
     parsed_args = {}
     
@@ -72,7 +75,7 @@ def generate():
     
     # dont generate empty resource packs
     if len(components) == 0:
-        return "nice try but im not generating an empty resource pack<br>why do you want this"
+        return MSG_ERROR_EMPTY_PACK
     
     # create the package and send it to the user
     package = PackageData(components)

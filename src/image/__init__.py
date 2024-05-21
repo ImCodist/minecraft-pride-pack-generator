@@ -19,6 +19,10 @@ def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str],
     if flag == None:
         return None
     
+    # be sure the flag actually has color
+    if len(flag.colors) == 0:
+        return None
+    
     # load images if they are provided as file paths
     if type(image) is str:
         image = Image.open(image)

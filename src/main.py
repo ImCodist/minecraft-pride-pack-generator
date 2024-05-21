@@ -10,8 +10,6 @@ import gitinfo
 
 VERSION = (0, 0, 0)
 
-# TODO: it could be cool to move some options users may wanna change if self hosting here
-
 
 # setup versioning info
 version_formatted = ".".join(map(str, VERSION))

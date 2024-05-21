@@ -16,6 +16,10 @@ version_formatted = ".".join(map(str, VERSION))
 git_info = gitinfo.get_git_info()
 
 
+def create_app():
+    return web.create_app()
+
+
 def main():
     app = web.create_app()
     app.run(debug=True)

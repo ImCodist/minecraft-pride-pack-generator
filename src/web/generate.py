@@ -6,10 +6,7 @@ Has no visual front end.
 
 from flask import Blueprint, request, send_file
 from components import experience_bar, hearts, enchanted_glint
-from data.package import PackageData
-
-
-RESULT_FILE_NAME = "pridepack.zip"
+from data.package import PackageData, PACK_FILE_NAME
 
 
 def parse_request_args(args) -> dict:
@@ -83,4 +80,4 @@ def generate():
     final_result = package.package()
     final_result.seek(0)
     
-    return send_file(final_result, download_name=RESULT_FILE_NAME, as_attachment=True)
+    return send_file(final_result, download_name=PACK_FILE_NAME, as_attachment=True)

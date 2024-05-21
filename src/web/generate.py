@@ -73,6 +73,10 @@ def generate():
             new_component.options = parsed_args[component_id]
             components.append(new_component)
     
+    # dont generate empty resource packs
+    if len(components) == 0:
+        return "nice try but im not generating an empty resource pack<br>why do you want this"
+    
     # create the package and send it to the user
     package = PackageData(components)
     

@@ -13,6 +13,7 @@ import json
 ASSET_PACK_ICON = "assets/images/pack.png"
 
 FLAGS_DIRECTORY = "assets/flags"
+DEFAULT_FLAG_ID = "traditional"
 CACHE_FLAG_DATA = True
 
 
@@ -120,4 +121,9 @@ def get_flags() -> dict[str, FlagData]:
 
 def get_flag(id: str) -> FlagData:
     flags = get_flags()
-    return flags.get(id, None)
+    
+    flag = flags.get(id, None)
+    if not flag:
+        flag = flags.get(DEFAULT_FLAG_ID, None)
+    
+    return flag

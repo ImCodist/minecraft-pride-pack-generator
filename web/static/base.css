@@ -30,6 +30,26 @@
 }
 
 
+#page_footer .right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+#page_footer .left * {
+    margin-right: 10px;
+}
+
+#page_footer .right * {
+    margin-left: 10px;
+}
+
+
+#page_footer .get_version {
+    color: gray;
+}
+
+
 #base_download_segment {
     margin-top: 40px;
 }

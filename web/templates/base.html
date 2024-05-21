@@ -44,9 +44,19 @@
         </div>
 
         <!-- footer -->
-        <div class="ui" id="page_footer">
-            website by <a href="https://imcodist.xyz">codist</a>
+        <div id="page_footer">
+            <div class="ui equal width grid">
+                <div class="left floated column">
+                    website by <a href="https://imcodist.xyz">codist</a>
+                </div>
+                <div class="right floated column">
+                    <div id="version" class="get_version"></div>
+                    <a href="https://github.com/ImCodist/minecraft-pride-pack-generator">GitHub</a>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="{{ url_for("static", filename="js/base.js")}}"></script>
 </body>
 </html>

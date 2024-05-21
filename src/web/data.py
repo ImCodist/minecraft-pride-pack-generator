@@ -8,8 +8,27 @@ Has no visual front end.
 from data import get_flags
 from flask import Blueprint
 
+from main import version_formatted, git_info
+
 
 bp = Blueprint("data", __name__)
+
+
+@bp.route("/data/version")
+def data_version():
+    git_sha = git_info.get("commit", "")
+    
+    data = {
+        "version": version_formatted,
+        "git_sha": git_sha
+    }
+    
+    if len(git_sha) >= 7:
+        data["git_sha_short"] = git_sha[0:7]
+    else:
+        data["git_sha_short"] = git_sha
+    
+    return data
 
 
 @bp.route("/data/flags")

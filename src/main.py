@@ -1,11 +1,21 @@
 """
-Starts the web server and initializes any assets that need to be
-referenced frequently by users.
-This should always be called when you want to actually start the application.
+Starts the web server and stores any important information.
+This should always be run when you want to actually start the application.
 """
 
 
 import web
+import gitinfo
+
+
+VERSION = (0, 0, 0)
+
+# TODO: it could be cool to move some options users may wanna change if self hosting here
+
+
+# setup versioning info
+version_formatted = ".".join(map(str, VERSION))
+git_info = gitinfo.get_git_info()
 
 
 def main():

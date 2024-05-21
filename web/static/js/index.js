@@ -109,6 +109,8 @@ function registerMainControls() {
 // ACTUAL LIKE FUNCTIONAL STUFF
 
 function download() {
+    hasError = null
+
     dataValues = {}
     
     // get all the values and put only the used ones in an object
@@ -138,6 +140,44 @@ function download() {
         }
 
         dataValues[component] = componentDataValues
+    }
+
+    // check for errors
+    if (Object.keys(dataValues).length == 0) {
+        hasError = `you cant generate an empty pack silly!!!!`
+    } else {
+        flagRequiredMsg = "flag value is required"
+        requiresFlags = ["xp_bar", "hearts", "e_glint"]
+
+        missingFlags = []
+        
+        for (const component of requiresFlags) {
+            if (Object.keys(dataValues).includes(component)) {
+                if (dataValues[component]["flag"] == "") missingFlags.push(component)
+                
+                // special case for the xp bar as it can have two unique flags
+                if (component == "xp_bar") {
+                    if (
+                        dataValues[component]["unique_bg"] == true && 
+                        dataValues[component]["bg_flag"] == ""
+                    ) missingFlags.push(component + " (bg flag)")
+                }
+            }
+        }
+
+        if (missingFlags.length > 0) {
+            hasError = flagRequiredMsg + ` [${missingFlags.join(", ")}]`
+        }
+    }
+
+    if (hasError) {
+        $.toast({
+            class: "error",
+            title: `could not generate pack`,
+            message: hasError
+        });
+
+        return
     }
     
     // create the generate url

@@ -1,0 +1,73 @@
+{% extends "components/base.html" %}
+
+{% block component_id %}xp_bar{% endblock %}
+
+{% block component_name %}Experience Bar{% endblock %}
+{% block component_icon %}xp_bar.png{% endblock %}
+
+{% block options_content %}
+<div class="ui equal width grid">
+    <!-- main flag select -->
+    <div class="column">
+        <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select">
+            <input type="hidden" name="xp_bar_flag_select">
+            <div class="default text"></div>
+            <div class="scrollhint menu"></div>
+            <i class="dropdown icon"></i>
+        </div>
+    </div>
+    <!-- bg flag select -->
+    <div class="column">
+        <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select_bg">
+            <input type="hidden" name="xp_bar_flag_select_bg">
+            <div class="default text"></div>
+            <div class="scrollhint menu"></div>
+            <i class="dropdown icon"></i>
+        </div>
+    </div>
+</div>
+
+<div class="ui equal width grid">
+    <div class="column">
+        <div class="ui checkbox" id="xp_bar_change_bg_texture">
+            <input type="checkbox" name="xp_bar_change_bg_texture" checked>
+            <label>Change Background Texture</label>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui checkbox" id="xp_bar_unique_bg_texture">
+            <input type="checkbox" name="xp_bar_unique_bg_texture">
+            <label>Unique Background Texture</label>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function update() {
+        changeBGTextureChecked = $("#xp_bar_change_bg_texture").checkbox("is checked")
+        uniqueBGTextureChecked = $("#xp_bar_unique_bg_texture").checkbox("is checked")
+
+        if (changeBGTextureChecked) {
+            $("#xp_bar_unique_bg_texture").removeClass("disabled")
+        } else {
+            $("#xp_bar_unique_bg_texture").addClass("disabled")
+        }
+
+        if (uniqueBGTextureChecked && changeBGTextureChecked) {
+            $("#xp_bar_flag_select_bg").removeClass("disabled")
+            $("#xp_bar_flag_select_bg").parent().show()
+        } else {
+            $("#xp_bar_flag_select_bg").addClass("disabled")
+            $("#xp_bar_flag_select_bg").parent().hide()
+        }
+    }
+
+    $(function() {
+        $("#xp_bar_change_bg_texture").checkbox({onChange: update})
+        $("#xp_bar_unique_bg_texture").checkbox({onChange: update})
+
+        update();
+    })
+</script>
+{% endblock %}

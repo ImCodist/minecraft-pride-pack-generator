@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<!--PAGE TITLE: "{% block title %}{% endblock %}"-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+    <link rel="stylesheet" href="{{ url_for("static", filename="base.css") }}">
+
+    <!-- other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+
+    <!-- metadata -->
+    <title>
+        MC Pride Pack Generator
+        {% if self.title() %} - {{ self.title() }}{% endif %}
+    </title> <!-- the jinja code here adds a "- TITLE" if a title is given.-->
+
+    <link rel="icon" type="image/x-icon" href={{ url_for("static", filename="favicon.png")}}>
+</head>
+<body>
+    <div class="ui container" id="base_container">
+        <!-- center the main content -->
+        <div class="ui grid centered">
+            <div class="ten wide column">
+                <!-- page "header" -->
+                <div id="page_header">
+                    <h1 class="ui huge header">mc pride pack generator</h1>
+                    <div>gay people (and then some)</div>
+                </div>
+
+                <!-- page content -->
+                <div id="page_content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="ui" id="page_footer">
+            website by <a href="https://imcodist.xyz">codist</a>
+        </div>
+    </div>
+</body>
+</html>

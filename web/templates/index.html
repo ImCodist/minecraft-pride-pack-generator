@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% include "components/experience_bar.html" %}
+{% include "components/hearts.html" %}
+{% include "components/enchanted_glint.html" %}
+
+<div class="ui segment" id="base_download_segment">
+    <button class="ui primary button" id="download_button">
+        <i class="cloud download alternate icon"></i>
+        Download
+    </button>
+</div>
+
+<script src="{{ url_for("static", filename="js/index.js")}}"></script>
+
+{% endblock %}

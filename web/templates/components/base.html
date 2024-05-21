@@ -1,0 +1,16 @@
+<div class="ui segments component_segment" id="c_{% block component_id %}{% endblock %}">
+    <div class="ui segment component_header">
+        <div class="ui toggle checkbox component_checkbox" id="c_{{ self.component_id() }}_checkbox">
+            <input type="checkbox" name="c_{{ self.component_id() }}_checkbox_input" id="c_{{ self.component_id() }}_checkbox_input">
+            <label></label>
+        </div>
+
+        <h3>{% block component_name %}{% endblock %}</h3>
+
+        <img src="{{ url_for("static", filename="assets/icons/")}}{% block component_icon %}{% endblock %}" alt="">
+    </div>
+
+    <div class="ui segment component_options" id="c_{{ self.component_id() }}_options">
+        {% block options_content %}{% endblock %}
+    </div>
+</div>

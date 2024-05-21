@@ -1,0 +1,58 @@
+#base_container {
+    padding: 40px;
+    padding-bottom: 80px;
+
+    font-size: medium;
+}
+
+
+#page_header {
+    margin-bottom: 40px;
+}
+
+#page_header h1 {
+    margin-bottom: 0px;
+}
+
+
+#page_footer {
+    width: 100%;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    padding: 10px;
+
+    background-color: white;
+
+    z-index: 10;
+}
+
+
+#base_download_segment {
+    margin-top: 40px;
+}
+
+
+
+/* unrelated css stuff */
+.component_segment .component_header h3 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    position: relative;
+    bottom: 3px;
+    right: 2px;
+}
+
+.component_segment .component_header img {
+    display: inline;
+
+    width: 25px;
+
+    position: relative;
+    top: 2px;
+    left: 2px;
+}

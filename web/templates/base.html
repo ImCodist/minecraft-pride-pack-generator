@@ -27,20 +27,15 @@
 </head>
 <body>
     <div class="ui container" id="base_container">
-        <!-- center the main content -->
-        <div class="ui grid centered">
-            <div class="ten wide column">
-                <!-- page "header" -->
-                <div id="page_header">
-                    <h1 class="ui huge header">mc pride pack generator</h1>
-                    <div>gay people (and then some)</div>
-                </div>
+        <!-- page "header" -->
+        <div id="page_header">
+            <h1 class="ui huge header">mc pride pack generator</h1>
+            <div>gay people (and then some)</div>
+        </div>
 
-                <!-- page content -->
-                <div id="page_content">
-                    {% block content %}{% endblock %}
-                </div>
-            </div>
+        <!-- page content -->
+        <div id="page_content">
+            {% block content %}{% endblock %}
         </div>
 
         <!-- footer -->

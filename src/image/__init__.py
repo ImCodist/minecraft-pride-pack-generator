@@ -10,6 +10,8 @@ from PIL import Image, ImageColor, ImageOps, ImageDraw
 
 BLACK_THRESHOLD = 64
 
+ASSET_PACK_ICON = "assets/images/pack.png"
+
 
 def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str], 
                            size: tuple = None, position: tuple = None, 
@@ -111,3 +113,16 @@ def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str],
         active_image.alpha_composite(overlay)
     
     return active_image
+
+
+def generate_pack_png(flag: FlagData = None):
+    icon_overlay = Image.open(ASSET_PACK_ICON)
+    icon_underlay = Image.new("RGBA", icon_overlay.size, "#FFF")
+    
+    final_icon = generate_flag_on_image(
+        flag, icon_underlay,
+        size=(105, 105), position=(12, 12),
+        overlay=icon_overlay, vertical=flag.vertical_icon
+    )
+    
+    return final_icon

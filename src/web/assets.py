@@ -4,10 +4,10 @@ Has no visual front end.
 """
 
 
-from data.flag import get_flags
+from data.flag import get_flags, get_flag
 from flask import Blueprint, request, send_file
 from PIL import Image
-from image import generate_flag_on_image
+from image import generate_flag_on_image, generate_pack_png
 from io import BytesIO
 from os import path
 
@@ -57,7 +57,7 @@ bp = Blueprint("assets", __name__)
 
 
 @bp.route("/assets/flags")
-def data_flags():
+def assets_flags():
     flag_id = request.args.get("flag", "")
 
     flags = get_flags()
@@ -74,3 +74,17 @@ def data_flags():
             return send_file(flag_bytes, mimetype="image/png")
     
     return send_file(path.abspath(ASSET_FALLBACK_FLAG))
+
+
+@bp.route("/assets/packpng")
+def assets_packpng():
+    flag_id = request.args.get("flag", "")
+    
+    flag = get_flag(flag_id)
+    pack_png = generate_pack_png(flag)
+    
+    pack_png_bytes = BytesIO()
+    pack_png.save(pack_png_bytes, format="PNG")
+    pack_png_bytes.seek(0)
+    
+    return send_file(pack_png_bytes, mimetype="image/png")

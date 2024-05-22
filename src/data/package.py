@@ -6,10 +6,9 @@ Aswell as the code needed to package them into a final pack.
 
 from io import BytesIO
 from zipfile import ZipFile
-from PIL import Image
 from os import path
 from data.flag import get_flag
-from image import generate_flag_on_image
+from image import generate_pack_png
 import json
 
 
@@ -18,9 +17,6 @@ PACK_DESCRIPTION = "Makes a variety of Minecraft's textures into pride flags."
 
 PACK_MINIMUM_FORMAT = 18
 PACK_MAXIMUM_FORMAT = 32
-
-ASSET_PACK_ICON = "assets/images/pack.png"
-DEFAULT_PACK_ICON_FLAG = "traditional"
 
 
 class PackageData():
@@ -53,7 +49,7 @@ class PackageData():
         component_flags = []
         
         # get the flag that occurs the most to use for the pack icon
-        icon_flag_to_use = DEFAULT_PACK_ICON_FLAG
+        icon_flag_to_use = None
         for component in self.components:
             component_flag = component.options.get("flag", None)
             if component_flag:
@@ -65,14 +61,7 @@ class PackageData():
         # generate and add the pack icon to the zip
         icon_flag = get_flag(icon_flag_to_use)
         
-        icon_overlay = Image.open(ASSET_PACK_ICON)
-        icon_underlay = Image.new("RGBA", icon_overlay.size, "#FFF")
-        
-        final_icon = generate_flag_on_image(
-            icon_flag, icon_underlay,
-            size=(105, 105), position=(12, 12),
-            overlay=icon_overlay, vertical=icon_flag.vertical_icon
-        )
+        final_icon = generate_pack_png(icon_flag)
         
         icon_bytes = BytesIO()
         final_icon.save(icon_bytes, format="PNG")

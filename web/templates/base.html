@@ -23,12 +23,15 @@
         {% if self.title() %} - {{ self.title() }}{% endif %}
     </title> <!-- the jinja code here adds a "- TITLE" if a title is given.-->
 
-    <link rel="icon" type="image/x-icon" href={{ url_for("static", filename="favicon.png")}}>
+    <link rel="icon" type="image/x-icon" href={{ url_for("static", filename="favicon.png") }}>
 </head>
 <body>
     <div class="ui container" id="base_container">
         <!-- page "header" -->
         <div id="page_header">
+            <img class="ui rounded image" id="pack_png_random" src="/assets/packpng" style="display: none;">
+            <div class="ui placeholder image" id="pack_png_random_placeholder"></div>
+            
             <h1 class="ui huge header">mc pride pack generator</h1>
             <div>gay people (and then some)</div>
         </div>

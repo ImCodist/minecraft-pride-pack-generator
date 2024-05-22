@@ -16,6 +16,14 @@
     margin-bottom: 0px;
 }
 
+#page_header .image {
+    float: left;
+    width: 70px;
+    height: 70px;
+
+    margin-right: 15px;
+}
+
 
 #page_footer {
     width: 100%;

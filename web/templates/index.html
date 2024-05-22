@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<script src="{{ url_for("static", filename="js/index.js")}}"></script>
+
 {% include "components/experience_bar.html" %}
 {% include "components/hearts.html" %}
 {% include "components/enchanted_glint.html" %}
@@ -13,7 +15,5 @@
         Download
     </button>
 </div>
-
-<script src="{{ url_for("static", filename="js/index.js")}}"></script>
 
 {% endblock %}

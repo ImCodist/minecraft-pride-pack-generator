@@ -5,20 +5,7 @@
 // but i love you :)
 
 
-dataTable = {
-    "xp_bar": {
-        "flag": "xp_bar_flag_select",
-        "bg_flag": "xp_bar_flag_select_bg",
-        "change_bg": "xp_bar_change_bg_texture",
-        "unique_bg": "xp_bar_unique_bg_texture"
-    },
-    "hearts": {
-        "flag": "hearts_flag_select"
-    },
-    "e_glint": {
-        "flag": "e_glint_flag_select"
-    }
-}
+dataTable = {}
 
 
 $(function() {

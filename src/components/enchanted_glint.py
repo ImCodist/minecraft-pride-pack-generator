@@ -15,16 +15,21 @@ class ComponentEnchantedGlint(ComponentBase):
         
         flag = get_flag(self.options.get("flag", ""))
         
+        use_vertical = self.options.get("horizontal", "") != "true"
+        use_gradient = self.options.get("gradient", "") == "true"
+        
+        multi = 4
+        
         # item
         textures.append(Texture(
             path.join(base_path, "enchanted_glint_item.png"),
-            generate_flag_on_image(flag, ASSET_ENCHANTED_GLINT_ITEM)
+            generate_flag_on_image(flag, ASSET_ENCHANTED_GLINT_ITEM, vertical=use_vertical, gradient=use_gradient, multi=multi)
         ))
         
         # entity
         textures.append(Texture(
             path.join(base_path, "enchanted_glint_entity.png"),
-            generate_flag_on_image(flag, ASSET_ENCHANTED_GLINT_ENTITY)
+            generate_flag_on_image(flag, ASSET_ENCHANTED_GLINT_ENTITY, vertical=use_vertical, gradient=use_gradient, multi=multi)
         ))
         
         return textures

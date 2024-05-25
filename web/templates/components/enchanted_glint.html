@@ -13,9 +13,35 @@
     <i class="dropdown icon"></i>
 </div>
 
+<div class="seperator"></div>
+
+<div class="ui equal width grid">
+    <div class="column">
+        <div class="ui checkbox" id="e_glint_gradient">
+            <input type="checkbox" name="e_glint_gradient" checked>
+            <label>Apply Gradient</label>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui checkbox" id="e_glint_horizontal">
+            <input type="checkbox" name="e_glint_horizontal">
+            <label>Draw Flag Horizontally</label>
+        </div>
+    </div>
+</div>
+
 <script>
     dataTable["e_glint"] = {
-        "flag": "e_glint_flag_select"
+        "flag": "e_glint_flag_select",
+        "horizontal": "e_glint_horizontal",
+        "gradient": "e_glint_gradient"
     }
+</script>
+
+<script>
+    $(function() {
+        $("#e_glint_horizontal").checkbox();
+        $("#e_glint_gradient").checkbox();
+    })
 </script>
 {% endblock %}

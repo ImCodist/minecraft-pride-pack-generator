@@ -87,3 +87,16 @@
     top: 2px;
     left: 2px;
 }
+
+/* component options */
+.component_options .ui.grid:not(:first-of-type) {
+    margin-top: 0px;
+}
+
+.component_options .ui.grid:last-of-type {
+    margin-bottom: -8px;
+}
+
+.component_options .seperator {
+    margin-top: 5px;
+}

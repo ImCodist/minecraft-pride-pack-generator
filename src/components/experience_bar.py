@@ -16,8 +16,10 @@ class ComponentExperienceBar(ComponentBase):
         # get the main flag to use when drawing
         main_flag = get_flag(self.options.get("flag", ""))
         
+        use_gradient = self.options.get("gradient", "") == "true"
+        
         # generate the progress image
-        progress_image = generate_flag_on_image(main_flag, ASSET_EXPERIENCE_BAR_PROGRESS)
+        progress_image = generate_flag_on_image(main_flag, ASSET_EXPERIENCE_BAR_PROGRESS, gradient=use_gradient)
         textures.append(
             Texture(path.join(base_path, "experience_bar_progress.png"), progress_image)
         )
@@ -33,7 +35,7 @@ class ComponentExperienceBar(ComponentBase):
             if not background_flag:
                 background_flag = main_flag
             
-            background_image = generate_flag_on_image(background_flag, ASSET_EXPERIENCE_BAR_BACKGROUND)
+            background_image = generate_flag_on_image(background_flag, ASSET_EXPERIENCE_BAR_BACKGROUND, gradient=use_gradient)
             textures.append(
                 Texture(path.join(base_path, "experience_bar_background.png"), background_image)
             )

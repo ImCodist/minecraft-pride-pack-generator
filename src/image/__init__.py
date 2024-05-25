@@ -9,13 +9,20 @@ from PIL import Image, ImageColor, ImageOps, ImageDraw
 
 
 BLACK_THRESHOLD = 64
+GRADIENT_STEPS = 8
 
 ASSET_PACK_ICON = "assets/images/pack.png"
 
 
+def move_toward(start, end, percent):
+    # percent is 0.0 (at the start) or 1.0 (at the end)
+    return start + ((end - start) * percent)
+
+
 def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str], 
                            size: tuple = None, position: tuple = None, 
-                           overlay: Union[Image.Image, str] = None, vertical = False
+                           overlay: Union[Image.Image, str] = None, vertical = False,
+                           gradient: bool = False, multi: int = 1
                            ) -> Image.Image:
     # be sure a valid flag is given
     if flag == None:
@@ -34,8 +41,8 @@ def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str],
     # set the active image to be the input image
     active_image = image
     
-    # generate a recolored version of the input image per color
-    color_images = []
+    # get the flags colors and convert them to a color tuple
+    color_array = []
     for color_input in flag.colors:
         # parse color input
         if type(color_input) is str and not color_input.startswith("#"):
@@ -52,6 +59,52 @@ def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str],
                 color[2] + BLACK_THRESHOLD
             )
         
+        color_array.append(color)
+    
+    # multiply the amount of colors (aka the amount of times the flag shows) on the texture
+    if multi > 1:
+        new_color_array = color_array * multi
+        color_array = new_color_array
+    
+    # create a gradient out of the color array if asked for
+    if gradient:
+        i = 0
+        gradient_color_array = []
+        for color in color_array:
+            i += 1
+
+            # add the initial starting color
+            gradient_color_array.append(color)
+            
+            next_color_index = i
+            if next_color_index >= len(color_array):
+                # end at the final color
+                break
+            
+            next_color = color_array[next_color_index]
+            if next_color == color:
+                for e in range(GRADIENT_STEPS - 2):
+                    gradient_color_array.append(color)
+                
+                continue
+            
+            # move towards the next colors value by X gradient steps
+            for e in range(GRADIENT_STEPS - 1):
+                percent = (e + 1) / GRADIENT_STEPS
+                new_color = (
+                    move_toward(color[0], next_color[0], percent),
+                    move_toward(color[1], next_color[1], percent),
+                    move_toward(color[2], next_color[2], percent)
+                )
+                
+                gradient_color_array.append(new_color)
+        
+        # replace the color array with the gradiented version
+        color_array = gradient_color_array
+    
+    # generate a recolored version of the input image per color
+    color_images = []
+    for color in color_array:
         # recolor the image
         # split the image into its seperate layers to get the alpha layer (if it exists)
         image_layers = active_image.split()
@@ -81,7 +134,7 @@ def generate_flag_on_image(flag: FlagData, image: Union[Image.Image, str],
     if vertical:
         flag_segment_size = flag_size[1]
     
-    flag_segment_size = flag_segment_size / len(flag.colors)
+    flag_segment_size = flag_segment_size / len(color_array)
     
     i = 0
     for color_image in color_images:

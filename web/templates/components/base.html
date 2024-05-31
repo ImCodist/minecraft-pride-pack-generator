@@ -9,8 +9,18 @@
 
         <img src="{{ url_for("static", filename="assets/icons/")}}{% block component_icon %}{% endblock %}" alt="">
     </div>
-
-    <div class="ui segment component_options" id="c_{{ self.component_id() }}_options">
+    
+    <div class="ui segment component_options component_content" id="c_{{ self.component_id() }}_options">
         {% block options_content %}{% endblock %}
     </div>
+
+    <div class="ui segment component_preview inverted component_content" id="c_{{ self.component_id() }}_preview">
+        <img src="{{ url_for("static", filename="assets/previews/")}}{{ self.component_id() }}.png" alt="">
+    </div>
 </div>
+
+<style>
+    .component_preview {
+        background-image: url(' {{ url_for("static", filename="assets/dirt.png") }} ') !important;
+    }
+</style>

@@ -46,13 +46,13 @@ function updateComponent(component) {
     componentHeader = component.children(".component_header").first()
     componentCheckbox = componentHeader.children(".component_checkbox").first()
 
-    componentOptions = component.children(".component_options").first()
+    componentContent = component.children(".component_content")
 
     // hide the options if the checkbox is not checked
     isChecked = componentCheckbox.checkbox("is checked")
 
-    if (isChecked) componentOptions.show()
-    else componentOptions.hide()
+    if (isChecked) componentContent.show()
+    else componentContent.hide()
 }
 
 

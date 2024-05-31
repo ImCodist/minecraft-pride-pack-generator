@@ -6,11 +6,17 @@
 {% block component_icon %}hearts.png{% endblock %}
 
 {% block options_content %}
-<div class="ui fluid selection dropdown flag_select" id="hearts_flag_select">
-    <input type="hidden" name="hearts_flag_select">
-    <div class="default text"></div>
-    <div class="scrollhint menu"></div>
-    <i class="dropdown icon"></i>
+<div class="ui equal width compact grid">
+    <div class="row">
+        <div class="column">
+            <div class="ui fluid selection dropdown flag_select" id="hearts_flag_select">
+                <input type="hidden" name="hearts_flag_select">
+                <div class="default text"></div>
+                <div class="scrollhint menu"></div>
+                <i class="dropdown icon"></i>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

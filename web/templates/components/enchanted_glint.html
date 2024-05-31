@@ -6,26 +6,30 @@
 {% block component_icon %}e_glint.gif{% endblock %}
 
 {% block options_content %}
-<div class="ui fluid selection dropdown flag_select" id="e_glint_flag_select">
-    <input type="hidden" name="e_glint_flag_select">
-    <div class="default text"></div>
-    <div class="scrollhint menu"></div>
-    <i class="dropdown icon"></i>
-</div>
-
-<div class="seperator"></div>
-
-<div class="ui equal width grid">
-    <div class="column">
-        <div class="ui checkbox" id="e_glint_gradient">
-            <input type="checkbox" name="e_glint_gradient" checked>
-            <label>Apply Gradient</label>
+<div class="ui equal width compact grid">
+    <div class="row">
+        <div class="column">
+            <div class="ui fluid selection dropdown flag_select" id="e_glint_flag_select">
+                <input type="hidden" name="e_glint_flag_select">
+                <div class="default text"></div>
+                <div class="scrollhint menu"></div>
+                <i class="dropdown icon"></i>
+            </div>
         </div>
     </div>
-    <div class="column">
-        <div class="ui checkbox" id="e_glint_horizontal">
-            <input type="checkbox" name="e_glint_horizontal">
-            <label>Draw Flag Horizontally</label>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui checkbox" id="e_glint_gradient">
+                <input type="checkbox" name="e_glint_gradient" checked>
+                <label>Apply Gradient</label>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui checkbox" id="e_glint_horizontal">
+                <input type="checkbox" name="e_glint_horizontal">
+                <label>Draw Flag Horizontally</label>
+            </div>
         </div>
     </div>
 </div>

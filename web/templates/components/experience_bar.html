@@ -6,49 +6,51 @@
 {% block component_icon %}xp_bar.png{% endblock %}
 
 {% block options_content %}
-<div class="ui equal width grid">
-    <!-- main flag select -->
-    <div class="column">
-        <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select">
-            <input type="hidden" name="xp_bar_flag_select">
-            <div class="default text"></div>
-            <div class="scrollhint menu"></div>
-            <i class="dropdown icon"></i>
+<div class="ui equal width compact grid">
+    <!-- flag selects -->
+    <div class="row">
+        <!-- main flag select -->
+        <div class="column">
+            <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select">
+                <input type="hidden" name="xp_bar_flag_select">
+                <div class="default text"></div>
+                <div class="scrollhint menu"></div>
+                <i class="dropdown icon"></i>
+            </div>
+        </div>
+        <!-- bg flag select -->
+        <div class="column">
+            <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select_bg">
+                <input type="hidden" name="xp_bar_flag_select_bg">
+                <div class="default text"></div>
+                <div class="scrollhint menu"></div>
+                <i class="dropdown icon"></i>
+            </div>
         </div>
     </div>
-    <!-- bg flag select -->
-    <div class="column">
-        <div class="ui fluid selection dropdown flag_select" id="xp_bar_flag_select_bg">
-            <input type="hidden" name="xp_bar_flag_select_bg">
-            <div class="default text"></div>
-            <div class="scrollhint menu"></div>
-            <i class="dropdown icon"></i>
-        </div>
-    </div>
-</div>
 
-<div class="seperator"></div>
-
-<div class="ui equal width grid">
-    <div class="column">
-        <div class="ui checkbox" id="xp_bar_change_bg_texture">
-            <input type="checkbox" name="xp_bar_change_bg_texture" checked>
-            <label>Change Background Texture</label>
+    <!-- check boxes -->
+    <div class="row">
+        <div class="column">
+            <div class="ui checkbox" id="xp_bar_change_bg_texture">
+                <input type="checkbox" name="xp_bar_change_bg_texture" checked>
+                <label>Change Background Texture</label>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui checkbox" id="xp_bar_unique_bg_texture">
+                <input type="checkbox" name="xp_bar_unique_bg_texture">
+                <label>Unique Background Texture</label>
+            </div>
         </div>
     </div>
-    <div class="column">
-        <div class="ui checkbox" id="xp_bar_unique_bg_texture">
-            <input type="checkbox" name="xp_bar_unique_bg_texture">
-            <label>Unique Background Texture</label>
-        </div>
-    </div>
-</div>
 
-<div class="ui equal width grid">
-    <div class="column">
-        <div class="ui checkbox" id="xp_bar_gradient">
-            <input type="checkbox" name="xp_bar_gradient">
-            <label>Apply Gradient</label>
+    <div class="row">
+        <div class="column">
+            <div class="ui checkbox" id="xp_bar_gradient">
+                <input type="checkbox" name="xp_bar_gradient">
+                <label>Apply Gradient</label>
+            </div>
         </div>
     </div>
 </div>

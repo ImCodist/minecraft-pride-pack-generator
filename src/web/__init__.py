@@ -15,8 +15,13 @@ def create_app():
         template_folder=path.abspath("web/templates")
     )
     
+    
     from web.index import bp as bp_index
     app.register_blueprint(bp_index)
+    
+    from web.changelog import bp as bp_changelog
+    app.register_blueprint(bp_changelog)
+    
     
     from web.generate import bp as bp_generate
     app.register_blueprint(bp_generate)

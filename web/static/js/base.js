@@ -25,4 +25,11 @@ $(function() {
             $("#pack_png_random_placeholder").hide()
         })
     })
+
+    // set the navbars avtive
+    $("#navbar").children().each(function(navitem) {
+        if ($(this).attr("href") == window.location.pathname) {
+            $(this).addClass("active")
+        }
+    })
 })

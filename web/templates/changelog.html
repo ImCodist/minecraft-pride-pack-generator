@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="ui segment">
+    <div class="ui top attached label"><a href="https://github.com/ImCodist/minecraft-pride-pack-generator/blob/main/CHANGELOG.md">CHANGELOG.md <i class="external alternate icon"></i></a></div>
+
+    {{ changelog_html|safe }}
+</div>
+{% endblock %}

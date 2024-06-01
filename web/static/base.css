@@ -1,3 +1,15 @@
+@font-face {
+    font-family: MinecraftTen;
+    /* TODO: figure out how to properly do this with jinja */
+    src: url("assets/fonts/MinecraftTen.ttf");
+}
+
+@font-face {
+    font-family: MinecraftSeven;
+    src: url("assets/fonts/MinecraftSeven.ttf");
+}
+
+
 #base_container {
     padding: 40px;
     padding-bottom: 80px;
@@ -8,13 +20,21 @@
 }
 
 
-#page_header {
+#page_header_seperator {
     margin-bottom: 40px;
+}
+
+
+#page_header {
+    margin-bottom: 20px;
 }
 
 #page_header h1 {
     margin-bottom: 0px;
     margin-top: 0px;
+
+    font-family: MinecraftTen;
+    font-weight: normal;
 }
 
 #page_header .image {
@@ -62,7 +82,7 @@
 
 
 #base_download_segment {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 

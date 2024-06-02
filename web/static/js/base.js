@@ -1,13 +1,7 @@
 $(function() {
     // update any classes that need to display the version number
     $.get("data/version", {}, function(result) {
-        versionInfo = result.version
-
-        gitSha = result.git_sha_short
-        if (gitSha != "") {
-            versionInfo += "+" + gitSha
-        }
-
+        versionInfo = result.full
         $(".get_version").html("v" + versionInfo)
     })
 
@@ -32,4 +26,9 @@ $(function() {
             $(this).addClass("active")
         }
     })
+
+    // nag the user if they are on mobile
+    if (navigator.userAgent.match(/Mobile/)) {
+        $("#mobile_nag").nag()
+    }
 })

@@ -20,6 +20,7 @@ def data_version():
     
     data = {
         "version": version_formatted,
+        "git_branch": git_info.get("refs", ""),
         "git_sha": git_sha
     }
     
@@ -27,6 +28,15 @@ def data_version():
         data["git_sha_short"] = git_sha[0:7]
     else:
         data["git_sha_short"] = git_sha
+    
+    data["full"] = data.get("version")
+    
+    addon = "+"
+    if data.get("git_branch", None) and data["git_branch"] != "main":
+        data["full"] += addon + data.get("git_branch")
+        addon = "."
+    if data.get("git_sha_short", None):
+        data["full"] += addon + data.get("git_sha_short")
     
     return data
 

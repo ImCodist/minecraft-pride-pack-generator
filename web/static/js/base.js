@@ -26,4 +26,9 @@ $(function() {
             $(this).addClass("active")
         }
     })
+
+    // nag the user if they are on mobile
+    if (navigator.userAgent.match(/Mobile/)) {
+        $("#mobile_nag").nag()
+    }
 })

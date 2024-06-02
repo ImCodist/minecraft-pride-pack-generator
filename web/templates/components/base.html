@@ -15,9 +15,25 @@
     </div>
 
     <div class="ui segment component_preview component_content" id="c_{{ self.component_id() }}_preview">
-        <img src="{{ url_for("static", filename="assets/previews/") }}{{ self.component_id() }}.png" alt="">
+        <img alt="">
     </div>
 </div>
+
+<script>
+    $(function() {
+        /* have all input types update the preview when changes */
+        /* TODO: this better */
+        dropdowns = $(`#c_{{ self.component_id() }}`).find(".dropdown")
+        dropdowns.children("input").on("change", function() {
+            updateComponentPreview("{{ self.component_id() }}")
+        })
+
+        checkboxes = $(`#c_{{ self.component_id() }}`).find(".checkbox")
+        checkboxes.children("input").on("change", function() {
+            updateComponentPreview("{{ self.component_id() }}")
+        })
+    })
+</script>
 
 <style>
     .component_preview {

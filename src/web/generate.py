@@ -55,6 +55,21 @@ def get_base_component_from_id(id: str):
     return base_component
 
 
+def get_components_from_args_dict(args_dict: dict):
+    components = []
+    
+    # loop through every possible component and add it to the components list if it exists
+    for component_id in args_dict.keys():
+        new_component = get_base_component_from_id(component_id)
+        
+        # add the given options to the component and add it to the components list
+        if new_component:
+            new_component.options = args_dict[component_id]
+            components.append(new_component)
+    
+    return components
+
+
 bp = Blueprint("generate", __name__)
 
 
@@ -62,17 +77,7 @@ bp = Blueprint("generate", __name__)
 def generate():
     parsed_args = parse_request_args(request.args)
     
-    components = []
-    
-    # loop through every possible component and add it to the components list if it exists
-    for component_id in parsed_args.keys():
-        new_component = get_base_component_from_id(component_id)
-        
-        # add the given options to the component and add it to the components list
-        if new_component:
-            new_component.options = parsed_args[component_id]
-            components.append(new_component)
-    
+    components = get_components_from_args_dict(parsed_args)
     # dont generate empty resource packs
     if len(components) == 0:
         return MSG_ERROR_EMPTY_PACK

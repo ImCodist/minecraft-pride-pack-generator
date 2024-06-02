@@ -34,12 +34,16 @@ function registerComponents() {
         componentCheckbox.checkbox({
             onChange: function() {
                 component = $(this).parent().parent().parent()
-                updateComponent(component)
+                updateComponent(component);
             }
         })
 
         updateComponent(component);
     })
+
+    for (const component in dataTable) {
+        updateComponentPreview(component);
+    }
 }
 
 function updateComponent(component) {
@@ -53,6 +57,16 @@ function updateComponent(component) {
 
     if (isChecked) componentContent.show()
     else componentContent.hide()
+}
+
+function updateComponentPreview(componentID) {
+    dataValues = getComponentDataValues(componentID)
+
+    component = $(`#c_${componentID}`)
+    componentPreview = component.children(".component_preview").first()
+
+    componentPreview.children("img").attr("src", `/assets/preview?${$.param(dataValues)}`)
+    console.log(componentPreview)
 }
 
 
@@ -95,9 +109,8 @@ function registerMainControls() {
 
 // ACTUAL LIKE FUNCTIONAL STUFF
 
-function download() {
-    hasError = null
 
+function getComponentDataValues(forceComponent = "") {
     dataValues = {}
     
     // get all the values and put only the used ones in an object
@@ -107,7 +120,9 @@ function download() {
 
         // only get values for enabled components
         isEnabled = $(`#c_${component}_checkbox`).checkbox("is checked")
-        if (!isEnabled) continue
+        if (!isEnabled && forceComponent == "") continue
+
+        if (forceComponent != "" && forceComponent != component) continue
 
         for (const dataValue in componentDataTable) {
             dataValueId = componentDataTable[dataValue]
@@ -128,6 +143,15 @@ function download() {
 
         dataValues[component] = componentDataValues
     }
+
+    return dataValues
+}
+
+
+function download() {
+    hasError = null
+
+    dataValues = getComponentDataValues()
 
     // check for errors
     if (Object.keys(dataValues).length == 0) {

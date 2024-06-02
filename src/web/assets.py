@@ -5,9 +5,11 @@ Has no visual front end.
 
 
 from data.flag import get_flags, get_flag
+from web.generate import parse_request_args, get_components_from_args_dict
 from flask import Blueprint, request, send_file
 from PIL import Image
 from image import generate_flag_on_image, generate_pack_png
+from image.preview import generate_preview_component
 from io import BytesIO
 from os import path
 
@@ -75,7 +77,6 @@ def assets_flags():
     
     return send_file(path.abspath(ASSET_FALLBACK_FLAG))
 
-
 @bp.route("/assets/packpng")
 def assets_packpng():
     flag_id = request.args.get("flag", "")
@@ -88,3 +89,26 @@ def assets_packpng():
     pack_png_bytes.seek(0)
     
     return send_file(pack_png_bytes, mimetype="image/png")
+
+@bp.route("/assets/preview")
+def assets_preview():
+    parsed_args = parse_request_args(request.args)
+    components = get_components_from_args_dict(parsed_args)
+    
+    # only use the first component given, as there should only ever be a single given component
+    component_to_preview = None
+    if len(components) > 0:
+        component_to_preview = components[0]
+    
+    if not component_to_preview:
+        return "No component data given."
+    
+    component_preview = generate_preview_component(component_to_preview)
+    if not component_preview:
+        return "Component does not have a preview."
+    
+    component_preview_bytes = BytesIO()
+    component_preview.save(component_preview_bytes, format="PNG")
+    component_preview_bytes.seek(0)
+    
+    return send_file(component_preview_bytes, mimetype="image/png")

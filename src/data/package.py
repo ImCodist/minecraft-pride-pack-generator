@@ -16,7 +16,7 @@ PACK_FILE_NAME = "Pride Textures.zip"
 PACK_DESCRIPTION = "Makes a variety of Minecraft's textures into pride flags."
 
 PACK_MINIMUM_FORMAT = 18
-PACK_MAXIMUM_FORMAT = 32
+PACK_MAXIMUM_FORMAT = 34
 
 
 class PackageData():

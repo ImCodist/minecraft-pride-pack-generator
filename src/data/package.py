@@ -16,7 +16,8 @@ PACK_FILE_NAME = "Pride Textures.zip"
 PACK_DESCRIPTION = "Makes a variety of Minecraft's textures into pride flags."
 
 PACK_MINIMUM_FORMAT = 18
-PACK_MAXIMUM_FORMAT = 55
+# TODO: i really want to be able to get the latest pack format version from mojang themselves
+PACK_MAXIMUM_FORMAT = 99999999
 
 
 class PackageData():

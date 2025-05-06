@@ -1,0 +1,31 @@
+{
+    "name": "Progress (Rainbow Flag)",
+    "colors": [
+        "FE0000",
+        "FF7701",
+        "FEEF00",
+        "1ABD30",
+        "0056AB",
+        "AE0C93"
+    ],
+    "colors_no_overlays": [
+        "FBF9F5",
+        "FEAFC7",
+        "75D7EF",
+        "613A15",
+        "010101",
+
+        "FE0000",
+        "FE0000",
+        "FF7701",
+        "FF7701",
+        "FEEF00",
+        "FEEF00",
+        "1ABD30",
+        "1ABD30",
+        "0056AB",
+        "0056AB",
+        "AE0C93",
+        "AE0C93"
+    ]
+}

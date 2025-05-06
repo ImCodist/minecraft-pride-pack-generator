@@ -33,7 +33,8 @@ class ComponentHearts(ComponentBase):
                     size=(7, 7), position=(1.5, 1),
                     overlay=path.join(ASSET_HEARTS_DIR, "shine_overlay.png"),
 
-                    vertical=use_vertical
+                    vertical=use_vertical,
+                    flag_overlay=True
                 )
             )
 

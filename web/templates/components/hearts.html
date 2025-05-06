@@ -17,11 +17,21 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui checkbox" id="hearts_horizontal">
+                <input type="checkbox" name="hearts_horizontal">
+                <label>Draw Flag Horizontally</label>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     dataTable["hearts"] = {
-        "flag": "hearts_flag_select"
+        "flag": "hearts_flag_select",
+        "horizontal": "hearts_horizontal",
     }
 </script>
 {% endblock %}

@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.1.3] - 2025-05-05
+
+### Added
+- Hearts can now have the flag drawn vertically and horizontally.
+
+### Changed
+- Hearts now draw the flag vertically by default.
+- Updated maximum resource pack format to 55. (1.21.5)
+
+
 ## [1.1.2] - 2024-12-14
 
 ### Changed
@@ -29,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 
+[1.1.3]: https://github.com/ImCodist/minecraft-pride-pack-generator/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/ImCodist/minecraft-pride-pack-generator/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/ImCodist/minecraft-pride-pack-generator/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/ImCodist/minecraft-pride-pack-generator/compare/1.0.0...1.1.0
